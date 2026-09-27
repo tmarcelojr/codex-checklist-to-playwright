@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Northstar Support Queue</title>
+  <meta name="description" content="A synthetic support queue for practicing browser regression testing.">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">northstar<span>SUPPORT</span></div>
+    <div class="nav-label">WORKSPACE</div>
+    <div class="current">Support queue <span>6</span></div>
+    <div class="workspace-note">Training workspace<br><small>All records are synthetic</small></div>
+  </aside>
+  <main>
+    <header><div><div class="eyebrow">CUSTOMER OPERATIONS</div><h1>Support queue</h1><p>Assign incoming tickets to the right teammate.</p></div><button id="reset" class="secondary">Reset demo data</button></header>
+    <section class="queue" aria-label="Ticket workspace">
+      <div class="queue-heading"><h2>All tickets <span>6</span></h2><span class="meta">Demo workspace</span></div>
+      <form id="assign-form" class="toolbar">
+        <strong id="selected-count">0 selected</strong>
+        <div class="assignment"><label for="owner">Assign to</label><select id="owner" name="owner" required><option value="">Choose owner</option></select><button id="assign" type="submit" disabled>Assign tickets</button></div>
+      </form>
+      <div class="table-scroll"><table aria-label="Support tickets">
+        <thead><tr><th scope="col">Select</th><th scope="col">Ticket</th><th scope="col">Priority</th><th scope="col">Owner</th><th scope="col">Status</th></tr></thead>
+        <tbody id="tickets"></tbody>
+      </table></div>
+      <div id="message" role="status" aria-live="polite">Loading tickets…</div>
+    </section>
+    <footer>Changes remain in this demo workspace after a refresh. Server restarts restore the starting data.</footer>
+  </main>
+</body>
+</html>

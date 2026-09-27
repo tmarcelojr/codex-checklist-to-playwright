@@ -1,0 +1,3 @@
+Run npm run bug:on, show the app diff, and rerun the unchanged bulk-assignment test.
+Leave the defect in place. Show the result and explain whether the test caught
+the intended regression.

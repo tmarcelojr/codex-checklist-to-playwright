@@ -1,0 +1,11 @@
+Prepare this repository for local Playwright browser testing.
+Inspect the package scripts and existing Playwright configuration first.
+Reuse what is already here. Install missing project dependencies and the matching
+Chromium browser if needed, using this repository's package manager and lockfile.
+Run the existing browser smoke test to confirm the setup works.
+Keep application code unchanged. Do not add CI, integrations, or extra browsers.
+Show what you installed or reused, where tests and configuration live, and the
+command I can use to run the tests again. Report any blocked prerequisites.
+Start or confirm the separate manual-preview app at http://127.0.0.1:4310 using
+npm start. Keep it available for the demo. Reuse a verified running instance of
+this app rather than starting a duplicate. Do not stop unrelated processes.

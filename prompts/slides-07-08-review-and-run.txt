@@ -1,0 +1,7 @@
+Review the test's selected-ticket, unselected-ticket, and refresh checks.
+Explain data isolation and locators. Confirm no app code or expected results
+were changed to make it pass. Keep the test and assertions unchanged.
+Run DEMO_SLOW_MS=2000 RECORD_DEMO=1 npm run demo, then npm run report.
+Show final owners and observed step results, including refresh.
+Retain the screenshot and trace; inspect the trace if needed.
+Report failures and remaining limitations.

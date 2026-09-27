@@ -1,0 +1,4 @@
+Run npm run bug:off, then npm test. Keep the skill and test unchanged.
+Show actual results and the complete final diff, including untracked files.
+Confirm the app mutation is gone and report remaining limitations.
+Do not commit, push, or approve a PR.

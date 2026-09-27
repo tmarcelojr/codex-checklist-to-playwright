@@ -1,0 +1,5 @@
+Keep the skill, test, and app unchanged. Run npm test and show actual results.
+Show the complete diff, including the new skill and test files and any app changes.
+Explain how the assertions match the checklist and identify coverage gaps.
+If Git history is unavailable, state that limitation instead of claiming a complete repository diff.
+Do not commit, push, or approve a PR.

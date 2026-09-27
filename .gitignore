@@ -1,0 +1,26 @@
+# Publish only the engineer kit, not adjacent presenter material.
+/*
+!/.gitignore
+!/README.md
+!/ADOPTION.md
+!/setup.mjs
+!/.agents/
+!/prompts/
+!/reference/
+!/starter/
+!/tests/
+
+.DS_Store
+**/node_modules/
+**/test-results/
+**/playwright-report/
+.env
+.env.*
+!.env.example
+**/blob-report/
+**/playwright/.cache/
+*.mp4
+*.webm
+*.zip
+*.pptx
+*.pdf

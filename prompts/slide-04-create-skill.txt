@@ -1,0 +1,14 @@
+$skill-creator Create a skill named checklist-to-playwright in this repository at
+.agents/skills/checklist-to-playwright/SKILL.md.
+
+Its job is to turn a manual browser checklist into a Playwright test when I ask.
+Keep it to one readable instruction file with a name and description.
+
+Have it inspect and reuse the project's test setup, derive expected results from
+the checklist, check unaffected records when relevant, run the test, and show the
+change and actual results for human review. It should ask if important expected
+behavior is missing and report setup problems without claiming success.
+
+Keep application behavior unchanged for test-authoring tasks. Avoid hardcoding
+this demo's tickets, names, ports, or paths. Use the existing tools and test setup.
+Do not create a test yet. Show me the skill file and explain its parts briefly.

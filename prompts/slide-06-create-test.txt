@@ -1,0 +1,9 @@
+$checklist-to-playwright
+
+Read .agents/skills/checklist-to-playwright/SKILL.md and confirm the file used.
+
+Turn this manual checklist into one test in tests/bulk-assign.spec.ts:
+Open the support queue. Select NS-1042 and NS-1043. Assign both to Maya.
+Verify those two changed owner, every unselected ticket kept its original owner,
+and all six owners remain correct after refreshing the page.
+Use the starting owners documented in README.md. Run the test and show the diff.
