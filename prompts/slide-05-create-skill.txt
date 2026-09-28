@@ -1,5 +1,5 @@
-$skill-creator Create a repository skill named checklist-to-playwright using the
-rules below. Save it in this repository, not as a personal skill.
+$skill-creator Create checklist-to-playwright in this repository using the rules
+below.
 
 Its job is to turn a manual browser checklist into a Playwright test when I ask.
 Keep it to one readable instruction file with a name and description.
