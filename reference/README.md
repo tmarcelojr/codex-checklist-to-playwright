@@ -1,8 +1,8 @@
 # Prepared references
 
 The fresh workspace created by `setup.mjs` contains neither the custom skill nor the bulk-assignment test.
-Create the skill with `prompts/slide-04-create-skill.txt`, inspect its actual file,
-then invoke it with `prompts/slide-06-create-test.txt`. Wording and implementation can differ
+Create the skill with `prompts/slide-05-create-skill.txt`, inspect its actual file,
+then invoke it with `prompts/slide-07-create-test.txt`. Wording and implementation can differ
 from these prepared references; review their behavior and scope.
 
 `checklist-to-playwright/SKILL.md` is the instruction-only reference. Its intended

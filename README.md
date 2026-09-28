@@ -29,23 +29,23 @@ Open the new `northstar-workshop` folder in Codex. Paste the prompts from this c
 
 | Slide | Prompt file | Action |
 |---|---|---|
-| 2 | [slide-02-setup.txt](prompts/slide-02-setup.txt) | Verify setup and start the manual preview |
-| 4 | [slide-04-create-skill.txt](prompts/slide-04-create-skill.txt) | Create the skill only |
-| 5 | No prompt | Inspect the generated skill |
-| 6 | [slide-06-create-test.txt](prompts/slide-06-create-test.txt) | Generate and run the bulk-assignment test |
-| 7–8 | [slides-07-08-review-and-run.txt](prompts/slides-07-08-review-and-run.txt) | Review, run visibly, and inspect the report |
-| 9 | [slide-09-final-review.txt](prompts/slide-09-final-review.txt) | Review the complete diff, suite results, and limitations |
-| 12, optional failure | [slide-12a-prove-regression.txt](prompts/slide-12a-prove-regression.txt) | Ask Codex to explain the unchanged test's failure |
-| 12, optional restore | [slide-12b-restore-and-review.txt](prompts/slide-12b-restore-and-review.txt) | Restore behavior, rerun, and review the final diff |
+| 3 | [slide-03-setup.txt](prompts/slide-03-setup.txt) | Verify setup and start the manual preview |
+| 5 | [slide-05-create-skill.txt](prompts/slide-05-create-skill.txt) | Create the skill only |
+| 6 | No prompt | Inspect the generated skill |
+| 7 | [slide-07-create-test.txt](prompts/slide-07-create-test.txt) | Generate and run the bulk-assignment test |
+| 8–9 | [slides-08-09-review-and-run.txt](prompts/slides-08-09-review-and-run.txt) | Review, run visibly, and inspect the report |
+| 10 | [slide-10-final-review.txt](prompts/slide-10-final-review.txt) | Review the complete diff, suite results, and limitations |
+| 13, optional failure | [slide-13a-prove-regression.txt](prompts/slide-13a-prove-regression.txt) | Ask Codex to explain the unchanged test's failure |
+| 13, optional restore | [slide-13b-restore-and-review.txt](prompts/slide-13b-restore-and-review.txt) | Restore behavior, rerun, and review the final diff |
 
-Slides 1, 3, 10, and 11 provide context, the manual workflow, and follow-up discussion. They do not require a Codex prompt.
+Slides 1, 2, 4, 6, 11, 12, and 14 provide context, the manual workflow, skill inspection, follow-up discussion, or backup material. They do not require a separate Codex prompt.
 
 The visible run uses two seconds between browser actions so you can follow along. Set `DEMO_SLOW_MS=0` for normal-speed evidence. Inspect the actual assertions, report, and diff after the run; browser playback alone does not prove correctness.
 
 ## Included files
 
 - `starter/`: working app and completed example test from the rehearsal. Setup omits that test for the fresh exercise.
-- `reference/`: prepared examples for comparison, including the inactive skill reference and CI example. Create the active skill in the fresh workspace on slide 4.
+- `reference/`: prepared examples for comparison, including the inactive skill reference and CI example. Create the active skill in the fresh workspace on slide 5.
 - `prompts/`: copy-and-paste instructions named for their slides.
 - `ADOPTION.md`: how to reuse the skill for meaningful workflows in your project.
 

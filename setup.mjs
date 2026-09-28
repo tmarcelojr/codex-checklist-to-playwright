@@ -37,4 +37,4 @@ run('git', ['init']);
 run('git', ['add', '.']);
 run('git', ['-c', 'user.name=Northstar Demo', '-c', 'user.email=demo@example.invalid', 'commit', '-m', 'Prepared synthetic support queue and existing smoke test']);
 run(npm, ['test']);
-console.log(`\nREADY: ${target}\nOpen this folder in Codex and follow the slide-to-prompt table in the kit README.\nStart with prompts/slide-02-setup.txt; slide 4 creates the skill and slide 6 creates the test.\nThe custom skill and bulk-assignment test are intentionally absent from this fresh workspace.\nRun npm start to explore the app at http://127.0.0.1:4310.\n`);
+console.log(`\nREADY: ${target}\nOpen this folder in Codex and follow the slide-to-prompt table in the kit README.\nStart with prompts/slide-03-setup.txt; slide 5 creates the skill and slide 7 creates the test.\nThe custom skill and bulk-assignment test are intentionally absent from this fresh workspace.\nRun npm start to explore the app at http://127.0.0.1:4310.\n`);
