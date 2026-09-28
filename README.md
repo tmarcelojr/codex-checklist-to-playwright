@@ -45,8 +45,7 @@ The visible run uses two seconds between browser actions so you can follow along
 ## Included files
 
 - `starter/`: working app and completed example test from the rehearsal. Setup omits that test for the fresh exercise.
-- `.agents/skills/checklist-to-playwright/`: completed skill example. Create your own in the fresh workspace on slide 4.
-- `reference/`: prepared examples for comparison, including an inactive CI example.
+- `reference/`: prepared examples for comparison, including the inactive skill reference and CI example. Create the active skill in the fresh workspace on slide 4.
 - `prompts/`: copy-and-paste instructions named for their slides.
 - `ADOPTION.md`: how to reuse the skill for meaningful workflows in your project.
 

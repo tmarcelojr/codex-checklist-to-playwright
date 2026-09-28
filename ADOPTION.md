@@ -5,7 +5,7 @@ The demo teaches a repeatable workflow: state expected behavior, ask Codex to au
 ## Install the skill
 
 1. Start in a project with a working Playwright setup. Run its existing tests first and resolve setup failures.
-2. Copy `.agents/skills/checklist-to-playwright/SKILL.md` from this kit into the same relative location in your project. If a skill already exists there, compare and review it instead of overwriting it.
+2. Copy `reference/checklist-to-playwright/SKILL.md` from this kit to `.agents/skills/checklist-to-playwright/SKILL.md` in your project. If a skill already exists there, compare and review it instead of overwriting it.
 3. Ask Codex to use `checklist-to-playwright` and supply the workflow and its expected outcomes. Do not copy the demo's app, ticket data, ports, or configuration into your application.
 
 Example request:
