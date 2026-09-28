@@ -23,7 +23,7 @@ Choose a destination that does not exist. Setup copies the app, installs the loc
 
 Setup excludes `.env` and `.env.*` files at every depth and refuses a starter with the deliberate regression or an unfamiliar assignment implementation. Restore the prepared starter with `npm run bug:off` in `starter/` before retrying. No destination is created when that source check fails.
 
-Open the new `northstar-workshop` folder in Codex. Paste the prompts from this cloned repository into that task in the table's order. Run application commands in the new workspace, where `package.json` lives. Setup has already installed dependencies; the setup prompt checks and reuses them.
+Open the new `northstar-workshop` folder in Codex. The generated workspace now includes its own `prompts/` and `reference/` directories, so it can be copied or opened independently of this kit. Paste the prompts into that task in the table's order. Run application commands in the new workspace, where `package.json` lives. Setup has already installed dependencies; the setup prompt checks and reuses them.
 
 ## Slide-to-prompt guide
 
@@ -33,20 +33,24 @@ Open the new `northstar-workshop` folder in Codex. Paste the prompts from this c
 | 5 | [slide-05-create-skill.txt](prompts/slide-05-create-skill.txt) | Create the skill only |
 | 6 | No prompt | Inspect the generated skill |
 | 7 | [slide-07-create-test.txt](prompts/slide-07-create-test.txt) | Generate and run the bulk-assignment test |
-| 8–9 | [slides-08-09-review-and-run.txt](prompts/slides-08-09-review-and-run.txt) | Review, run visibly, and inspect the report |
+| 8–9 | [slide-08-09-review-and-run.txt](prompts/slide-08-09-review-and-run.txt) | Review, run visibly, and inspect the report |
 | 10 | [slide-10-final-review.txt](prompts/slide-10-final-review.txt) | Review the complete diff, suite results, and limitations |
 | 13, optional failure | [slide-13a-prove-regression.txt](prompts/slide-13a-prove-regression.txt) | Ask Codex to explain the unchanged test's failure |
 | 13, optional restore | [slide-13b-restore-and-review.txt](prompts/slide-13b-restore-and-review.txt) | Restore behavior, rerun, and review the final diff |
 
 Slides 1, 2, 4, 6, 11, 12, and 14 provide context, the manual workflow, skill inspection, follow-up discussion, or backup material. They do not require a separate Codex prompt.
 
+Slide 11 takeaway: **Codex helps create and update the test. Playwright runs it
+independently.** The resulting test is ordinary repository code and runs with
+`npm test` without requiring Codex.
+
 The visible run uses two seconds between browser actions so you can follow along. Set `DEMO_SLOW_MS=0` for normal-speed evidence. Inspect the actual assertions, report, and diff after the run; browser playback alone does not prove correctness.
 
 ## Included files
 
-- `starter/`: working app and completed example test from the rehearsal. Setup omits that test for the fresh exercise.
-- `reference/`: prepared examples for comparison, including the inactive skill reference and CI example. Create the active skill in the fresh workspace on slide 5.
-- `prompts/`: copy-and-paste instructions named for their slides.
+- `starter/`: working app and completed example test from the rehearsal. Setup omits that test from the active `tests/` folder for the fresh exercise.
+- `reference/`: prepared examples for comparison, including the inactive skill reference, completed test, and CI example. Setup copies these into the fresh workspace without activating them.
+- `prompts/`: copy-and-paste instructions named for their slides. Setup copies these into the fresh workspace.
 - `ADOPTION.md`: how to reuse the skill for meaningful workflows in your project.
 
 To inspect the completed example directly, run `npm ci`, `npx playwright install chromium`, and `npm test` in `starter/`. Use a fresh setup-generated workspace for the from-scratch exercise.

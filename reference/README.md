@@ -1,6 +1,7 @@
 # Prepared references
 
-The fresh workspace created by `setup.mjs` contains neither the custom skill nor the bulk-assignment test.
+The fresh workspace created by `setup.mjs` contains neither an active custom skill
+nor an active bulk-assignment test. Completed examples remain under `reference/`.
 Create the skill with `prompts/slide-05-create-skill.txt`, inspect its actual file,
 then invoke it with `prompts/slide-07-create-test.txt`. Wording and implementation can differ
 from these prepared references; review their behavior and scope.

@@ -48,6 +48,26 @@ For a visible recording run you may set `DEMO_SLOW_MS=400` to slow browser
 actions. This is presentation pacing, not a synchronization technique.
 `RECORD_DEMO=1` retains screenshots and browser videos for evidence.
 
+## Workshop guide
+
+The setup-generated workspace includes all copy-and-paste prompts in `prompts/`:
+
+1. [Slide 3: setup](prompts/slide-03-setup.txt) verifies setup and starts the manual preview.
+2. [Slide 5: create skill](prompts/slide-05-create-skill.txt) creates the reusable skill without creating a test.
+3. [Slide 7: create test](prompts/slide-07-create-test.txt) creates and runs the bulk-assignment test.
+4. [Slides 8–9: review and run](prompts/slide-08-09-review-and-run.txt) reviews the test and runs the visible demo.
+5. [Slide 10: final review](prompts/slide-10-final-review.txt) runs the full suite and reviews the complete diff.
+6. [Slide 13: prove regression](prompts/slide-13a-prove-regression.txt) and [restore](prompts/slide-13b-restore-and-review.txt) are optional.
+
+Prepared expected examples live in `reference/`. They are for comparison when a
+participant gets stuck or for facilitator review; they are not active test or skill
+files. Do not present a copied reference as work generated during the exercise.
+See the [reference guide](reference/README.md) for the exact intended locations and limitations.
+
+Slide 11 takeaway: **Codex helps create and update the test. Playwright runs it
+independently.** The resulting test is ordinary repository code and runs with
+`npm test` without requiring Codex.
+
 ## Disclosed regression demonstration
 
 `npm run bug:on` deliberately changes the assignment implementation to update

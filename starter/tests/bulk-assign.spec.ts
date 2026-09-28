@@ -1,47 +1,53 @@
 import { test, expect } from '@playwright/test';
 
-test('bulk assignment changes only selected owners and survives refresh', async ({ page }) => {
-  // Expected starting state is documented in README.md.
-  const startingOwners = {
+test('bulk assignment changes only selected tickets and survives refresh', async ({ page }) => {
+  const row = (ticketId: string) => page.getByRole('row').filter({
+    has: page.getByRole('checkbox', { name: `Select ${ticketId}`, exact: true })
+  });
+  const initialOwners: Record<string, string> = {
     'NS-1042': 'Alex',
     'NS-1043': 'Sam',
     'NS-1044': 'Alex',
     'NS-1045': 'Sam',
     'NS-1046': 'Maya',
-    'NS-1047': 'Alex',
+    'NS-1047': 'Alex'
   };
-  const expectedOwners = { ...startingOwners, 'NS-1042': 'Maya', 'NS-1043': 'Maya' };
-  const tickets = page.getByRole('table', { name: 'Support tickets' });
+  const assignedOwners = {
+    ...initialOwners,
+    'NS-1042': 'Maya',
+    'NS-1043': 'Maya'
+  };
 
-  async function checkOwners(owners: Record<string, string>) {
-    await expect(tickets.getByRole('checkbox')).toHaveCount(6);
-    for (const [id, owner] of Object.entries(owners)) {
-      const row = tickets.getByRole('row').filter({
-        has: page.getByRole('checkbox', { name: `Select ${id}`, exact: true }),
-      });
-      await expect(row.getByRole('cell', { name: owner, exact: true })).toBeVisible();
+  async function expectOwners(expectedOwners: Record<string, string>) {
+    await expect(page.getByRole('checkbox')).toHaveCount(6);
+    for (const [ticketId, owner] of Object.entries(expectedOwners)) {
+      await expect(
+        row(ticketId).getByRole('cell', { name: owner, exact: true }),
+        `${ticketId} should belong to ${owner}`
+      ).toBeVisible();
     }
   }
 
-  await test.step('Open the support queue and check starting owners', async () => {
+  await test.step('Confirm the documented starting owners', async () => {
     await page.goto('/');
-    await expect(page.getByRole('heading', { name: 'Support queue' })).toBeVisible();
-    await checkOwners(startingOwners);
+    await expectOwners(initialOwners);
   });
 
-  await test.step('Select NS-1042 and NS-1043 and assign both to Maya', async () => {
-    await tickets.getByRole('checkbox', { name: 'Select NS-1042', exact: true }).check();
-    await tickets.getByRole('checkbox', { name: 'Select NS-1043', exact: true }).check();
-    await page.getByLabel('Assign to', { exact: true }).selectOption({ label: 'Maya' });
+  await test.step('Assign the two selected tickets to Maya', async () => {
+    await page.getByRole('checkbox', { name: 'Select NS-1042', exact: true }).check();
+    await page.getByRole('checkbox', { name: 'Select NS-1043', exact: true }).check();
+    await page.getByRole('combobox', { name: 'Assign to', exact: true }).selectOption('Maya');
     await page.getByRole('button', { name: 'Assign tickets', exact: true }).click();
+    await expect(page.getByRole('status')).toHaveText('2 tickets assigned to Maya.');
   });
 
-  await test.step('Check both changed owners and every unchanged owner', async () => {
-    await checkOwners(expectedOwners);
+  await test.step('Confirm selected and unselected ticket owners', async () => {
+    await expectOwners(assignedOwners);
+    await expect(page.getByRole('checkbox', { checked: true })).toHaveCount(0);
   });
 
-  await test.step('Refresh and check all six owners remain correct', async () => {
+  await test.step('Refresh and confirm all six owners persist', async () => {
     await page.reload();
-    await checkOwners(expectedOwners);
+    await expectOwners(assignedOwners);
   });
 });

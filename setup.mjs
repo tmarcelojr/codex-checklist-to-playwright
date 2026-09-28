@@ -11,6 +11,7 @@ let exists = false;
 try { await access(target); exists = true; } catch {}
 if (exists) throw new Error('Destination exists. Choose a NEW directory so your work is preserved.');
 const starter = resolve(kit, 'starter');
+const workshopResources = ['prompts', 'reference'];
 const assignmentSource = await readFile(resolve(starter, 'src/tickets.mjs'), 'utf8');
 const preparedAssignment = 'return tickets.map(ticket => ids.includes(ticket.id) ? { ...ticket, owner } : ticket);';
 if (assignmentSource.includes('DELIBERATE DEMO REGRESSION') || assignmentSource.split(preparedAssignment).length !== 2) {
@@ -26,6 +27,16 @@ await cp(starter, target, {
       parts.join('/') !== 'tests/bulk-assign.spec.ts';
   },
 });
+for (const resource of workshopResources) {
+  const sourceRoot = resolve(kit, resource);
+  await cp(sourceRoot, resolve(target, resource), {
+    recursive: true,
+    filter: source => {
+      const parts = relative(sourceRoot, source).split(sep);
+      return !parts.some(part => excluded.has(part) || part === '.env' || part.startsWith('.env.'));
+    },
+  });
+}
 const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
 function run(command, args) {
   const result = spawnSync(command, args, { cwd: target, stdio: 'inherit', shell: process.platform === 'win32' });
@@ -37,4 +48,4 @@ run('git', ['init']);
 run('git', ['add', '.']);
 run('git', ['-c', 'user.name=Northstar Demo', '-c', 'user.email=demo@example.invalid', 'commit', '-m', 'Prepared synthetic support queue and existing smoke test']);
 run(npm, ['test']);
-console.log(`\nREADY: ${target}\nOpen this folder in Codex and follow the slide-to-prompt table in the kit README.\nStart with prompts/slide-03-setup.txt; slide 5 creates the skill and slide 7 creates the test.\nThe custom skill and bulk-assignment test are intentionally absent from this fresh workspace.\nRun npm start to explore the app at http://127.0.0.1:4310.\n`);
+console.log(`\nREADY: ${target}\nOpen this folder in Codex and follow the workshop guide in README.md.\nStart with prompts/slide-03-setup.txt; slide 5 creates the skill and slide 7 creates the test.\nCompleted examples are available for comparison under reference/.\nThe active custom skill and bulk-assignment test are intentionally absent from this fresh workspace.\nRun npm start to explore the app at http://127.0.0.1:4310.\n`);

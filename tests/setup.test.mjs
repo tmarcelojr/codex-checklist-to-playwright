@@ -17,6 +17,8 @@ test('setup excludes environment files and rejects the prepared regression', asy
       recursive: true,
       filter: source => !source.split(sep).some(part => ['node_modules', '.git', 'test-results', 'playwright-report'].includes(part)),
     });
+    await cp(new URL('prompts/', kit), join(fixture, 'prompts'), { recursive: true });
+    await cp(new URL('reference/', kit), join(fixture, 'reference'), { recursive: true });
     // Harmless existing source copied under env filenames; no credentials are used.
     for (const name of ['.env', '.env.local', 'src/.env.test']) {
       await cp(new URL('starter/.gitignore', kit), join(fixture, 'starter', name));
@@ -28,6 +30,21 @@ test('setup excludes environment files and rejects the prepared regression', asy
     assert.match(setup.stdout, /READY:/);
     for (const name of ['.env', '.env.local', 'src/.env.test', 'tests/bulk-assign.spec.ts']) {
       await assert.rejects(access(join(target, name)), { code: 'ENOENT' });
+    }
+    for (const name of [
+      'prompts/slide-03-setup.txt',
+      'prompts/slide-05-create-skill.txt',
+      'prompts/slide-07-create-test.txt',
+      'prompts/slide-08-09-review-and-run.txt',
+      'prompts/slide-10-final-review.txt',
+      'prompts/slide-13a-prove-regression.txt',
+      'prompts/slide-13b-restore-and-review.txt',
+      'reference/README.md',
+      'reference/bulk-assign.spec.ts',
+      'reference/checklist-to-playwright/SKILL.md',
+      'reference/ci-example.yml',
+    ]) {
+      await access(join(target, name));
     }
     assert.match(await readFile(join(target, '.gitignore'), 'utf8'), /^\.env\.\*$/m);
     const ignored = spawnSync('git', ['check-ignore', '.env', '.env.local', 'src/.env.test'], { cwd: target, encoding: 'utf8' });
